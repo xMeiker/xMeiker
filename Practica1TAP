@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Drawing.Drawing2D;
+
+namespace Practica1TAP
+{
+    public partial class Program : Form
+    {
+        private Button button1;
+
+        public Program()
+        {
+            InitializeComponent();
+        }
+        static void Main(string[] args)
+        {
+            // SAGUILAN ROMAN JESUS CIPRIANO   20210633
+            // PRACTICA 1 
+
+            Console.WriteLine("[1] - Creando una forma desde consola, dandole formato y color");
+            Console.WriteLine("[2] - Agregando un boton a la forma desde cero junto con un mensaje");
+            Console.WriteLine("[3] - Todo realizado desde consola de cero, utilizando las referencias:");
+            Console.WriteLine("\tSystem.Windows.Forms");
+            Console.WriteLine("\tSystem.Drawing.Drawing2D");
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Program());
+        }
+
+        private void InitializeComponent()
+        {
+            this.button1 = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Location = new System.Drawing.Point(155, 77);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(133, 61);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Boton";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Program
+            // 
+            this.BackColor = System.Drawing.SystemColors.Info;
+            this.ClientSize = new System.Drawing.Size(431, 253);
+            this.Controls.Add(this.button1);
+            this.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Name = "Program";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "BIENVENIDO";
+            this.ResumeLayout(false);
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcionamiento del boton", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+    }
+}
