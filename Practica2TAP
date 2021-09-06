@@ -1,0 +1,121 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Drawing;
+
+namespace Practica2TAP
+{
+    public partial class Program : Form
+    {
+        // SAGUILAN ROMAN JESUS CIPRIANO   20210633
+        // PRACTICA 2
+        // BOTON EN MOVIMIENTO
+
+        bool Dir1;
+        bool Dir2;
+        private Timer timer1;
+        private System.ComponentModel.IContainer components;
+        private Button BtMovimiento;
+      
+
+        public Program()
+        {
+            InitializeComponent();
+        }
+        static void Main(string[] args)
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Program());
+        }
+
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.BtMovimiento = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.SuspendLayout();
+            // 
+            // BtMovimiento
+            // 
+            this.BtMovimiento.Location = new System.Drawing.Point(344, 236);
+            this.BtMovimiento.Name = "BtMovimiento";
+            this.BtMovimiento.Size = new System.Drawing.Size(160, 62);
+            this.BtMovimiento.TabIndex = 0;
+            this.BtMovimiento.Text = "Boton en movimiento";
+            this.BtMovimiento.UseVisualStyleBackColor = true;
+            this.BtMovimiento.Click += new System.EventHandler(this.BtMovimiento_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // Program
+            // 
+            this.BackColor = System.Drawing.SystemColors.Info;
+            this.ClientSize = new System.Drawing.Size(860, 627);
+            this.Controls.Add(this.BtMovimiento);
+            this.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Name = "Program";
+            this.Text = "PRACTICA 2";
+            this.Load += new System.EventHandler(this.Program_Load);
+            this.ResumeLayout(false);
+
+        }
+
+        private void Program_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtMovimiento_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (Dir1 == true)
+            {
+                BtMovimiento.Left += 5;
+            }
+            else if (Dir1 == false)
+            {
+                BtMovimiento.Left -= 5;
+            }
+
+            if (Dir2 == true)
+            {
+                BtMovimiento.Top -= 5;
+            }
+            else if (Dir2 == false)
+            {
+                BtMovimiento.Top += 5;
+            }
+
+            if (BtMovimiento.Left <= this.ClientRectangle.Left)
+            {
+                Dir1 = true;
+            }
+
+            if (BtMovimiento.Left + BtMovimiento.Width >= this.ClientRectangle.Right)
+            {
+                Dir1 = false;
+            }
+
+            if (BtMovimiento.Top <= this.ClientRectangle.Top)
+            {
+                Dir2 = false;
+            }
+
+            if (BtMovimiento.Top >= this.ClientRectangle.Bottom)
+            {
+                Dir2 = true;
+            }
+        }
+    }
+}
