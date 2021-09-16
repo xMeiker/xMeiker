@@ -1,0 +1,1052 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using System.ComponentModel;
+
+namespace Practica3TAP
+{
+    public partial class Program : Form
+    {
+        // DECLARACION DE VARIABLES DE LA FORMA
+        private Label lbl1;
+        private Label lbl2;
+        private Label lbl3;
+        private Label lbl4;
+        private Label lbl5;
+        private Label lbl6;
+        private Label lbl7;
+        private Label lbl8;
+        private Label lbl9;
+        private Label lbl10;
+        private Label lbl11;
+        private Label lbl12;
+        private Label lbl13;
+        private Label lbl14;
+        private Label lbl15;
+        private Label lbl16;
+        private Label lbl17;
+        private Label lbl18;
+        private Label lbl19;
+        private Label lbl20;
+        private Button btn1;
+        private Button btn2;
+        private Button btn3;
+        private Button btn4;
+        private Button btn5;
+        private PictureBox PiB1;
+        private PictureBox PiB2;
+        private PictureBox PiB3;
+        private Timer timer1;
+        private System.ComponentModel.IContainer components;
+        private Timer timer2;
+        private Timer timer3;
+        private Timer timer4;
+        private Timer timer5;
+        private Button btn;
+
+        // VARIABLES LOCALES A UTILIZAR PARA LAS DIRECCIONES DEL BOTON
+        bool Dir1;
+        bool Dir2;
+        bool Px1;
+        bool Py1;
+        bool Px2;
+        bool Py2;
+        bool Px3;
+        bool Py3;
+        bool btnD;
+        bool btnA;
+
+        int x;
+        int y;
+
+        int sec;
+
+        public Program()
+        {
+            InitializeComponent();
+        }
+
+        static void Main(string[] args)
+        {
+            // SAGUILAN ROMAN JESUS CIPRIANO   20210633
+            // PRACTICA 2
+            // BOTON EN MOVIMIENTO
+
+            // INSTRUCCIONES
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\tIntrucciones:");
+            Console.Title = "PRACTICA 3";
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("[1] - SI EL BOTÓN TOCA LA PARTE SUPERIOR DEBEN: APARECER 3 IMAGENES Y LA FORMA DEBE CAMBIAR A COLOR MORADA, LAS IMAGENES SE DEBEN MOVER POR LA FORMA TAMBIÉN");
+            Console.WriteLine("[2] - SI EL BOTÓN TOCA LA ESQUINA SUPERIOR DERECHA LAS CARITAS DESAPARECEN Y EL COLOR VERDE.");
+            Console.WriteLine("[3] - SI EL BOTÓN TOCA LA PARTE INFERIOR LA FORMA SE LLENA CON SU NOMBRE Y APELLIDOS MÍNIMO 20 VECES Y EL COLOR DE LA FORMA SE TORNA AMARILLO (SIN MOVIMIENTO)");
+            Console.WriteLine("[4] - SI EL BOTÓN TOCA LA ESQUINA INFERIOR DERECHA DESAPARECEN LOS NOMBRES Y QUEDA LA FORMA EN COLOR AZUL.");
+            Console.WriteLine("[5] - SI EL BOTÓN TOCA LA FORMA AL LADO DERECHO APARECEN 5 BOTONES MOVIÉNDOSE POR LA PANTALLA, CADA UNO CON UN COLOR DIFERENTE Y TOMA LA FORMA UN COLOR NARANJA.");
+            Console.WriteLine("[6] - SI EL BOTÓN INICIAL TOCA LA FORMA AL LADO IZQUIERDO Y HAY ELEMENTO CUALQUIERA EN LA FORMA SE DEBE REINICIAR A SU ESTADO INICIAL, OSEA ELIMINAR TODO, CARITAS, NOMBRES, BOTONES.");
+            Console.WriteLine("[7] - SI TOCA LA ESQUINA INFERIOR IZQUIERDA EL BOTON QUE ESTE DENTRO DE LA FORMA TENGA UN TEXT: PUEDE SER UN NUMERO, TEXTO O LO QUE DESEEN. LA FORMA PERMANECE EN EL COLOR QUE TRAIA.");
+            Console.WriteLine("[8] - SI EL BOTON TOCA LA ESQUINA SUPERIOR IZQUIERDA: LA FORMA CAMBIA DE COLOR 5 VECES SEGUIDAS, DESPUES DE ESO SE QUEDA EL COLOR QUE USTEDE DESEEN.");
+            Console.WriteLine("[9] - SI DAMOS CLICK EN EL BOTON APARECE UN SALUDO Y CERRAMOS LA  FORMA DESPUES DE UNOS SEGUNDOS");
+            Console.WriteLine("[10] - Todo realizado desde consola de cero, utilizando las referencias:");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\tSystem.Windows.Forms");
+            Console.WriteLine("\tSystem.Drawing.Drawing2D");
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Program());
+        }
+
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Program));
+            this.btn = new System.Windows.Forms.Button();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.lbl2 = new System.Windows.Forms.Label();
+            this.lbl3 = new System.Windows.Forms.Label();
+            this.lbl4 = new System.Windows.Forms.Label();
+            this.lbl5 = new System.Windows.Forms.Label();
+            this.lbl6 = new System.Windows.Forms.Label();
+            this.lbl7 = new System.Windows.Forms.Label();
+            this.lbl8 = new System.Windows.Forms.Label();
+            this.lbl9 = new System.Windows.Forms.Label();
+            this.lbl10 = new System.Windows.Forms.Label();
+            this.lbl11 = new System.Windows.Forms.Label();
+            this.lbl12 = new System.Windows.Forms.Label();
+            this.lbl13 = new System.Windows.Forms.Label();
+            this.lbl14 = new System.Windows.Forms.Label();
+            this.lbl15 = new System.Windows.Forms.Label();
+            this.lbl16 = new System.Windows.Forms.Label();
+            this.lbl17 = new System.Windows.Forms.Label();
+            this.lbl18 = new System.Windows.Forms.Label();
+            this.lbl19 = new System.Windows.Forms.Label();
+            this.lbl20 = new System.Windows.Forms.Label();
+            this.btn1 = new System.Windows.Forms.Button();
+            this.btn2 = new System.Windows.Forms.Button();
+            this.btn3 = new System.Windows.Forms.Button();
+            this.btn4 = new System.Windows.Forms.Button();
+            this.btn5 = new System.Windows.Forms.Button();
+            this.PiB1 = new System.Windows.Forms.PictureBox();
+            this.PiB2 = new System.Windows.Forms.PictureBox();
+            this.PiB3 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.timer4 = new System.Windows.Forms.Timer(this.components);
+            this.timer5 = new System.Windows.Forms.Timer(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.PiB1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PiB2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PiB3)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // btn
+            // 
+            this.btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btn.Location = new System.Drawing.Point(547, 261);
+            this.btn.Name = "btn";
+            this.btn.Size = new System.Drawing.Size(109, 47);
+            this.btn.TabIndex = 0;
+            this.btn.Text = "Boton";
+            this.btn.UseVisualStyleBackColor = false;
+            this.btn.Click += new System.EventHandler(this.btn_Click);
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.Location = new System.Drawing.Point(33, 9);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(283, 22);
+            this.lbl1.TabIndex = 1;
+            this.lbl1.Text = "Saguilan Roman Jesus Cipriano";
+            this.lbl1.Visible = false;
+            // 
+            // lbl2
+            // 
+            this.lbl2.AutoSize = true;
+            this.lbl2.Location = new System.Drawing.Point(33, 31);
+            this.lbl2.Name = "lbl2";
+            this.lbl2.Size = new System.Drawing.Size(283, 22);
+            this.lbl2.TabIndex = 2;
+            this.lbl2.Text = "Saguilan Roman Jesus Cipriano";
+            this.lbl2.Visible = false;
+            // 
+            // lbl3
+            // 
+            this.lbl3.AutoSize = true;
+            this.lbl3.Location = new System.Drawing.Point(33, 53);
+            this.lbl3.Name = "lbl3";
+            this.lbl3.Size = new System.Drawing.Size(283, 22);
+            this.lbl3.TabIndex = 3;
+            this.lbl3.Text = "Saguilan Roman Jesus Cipriano";
+            this.lbl3.Visible = false;
+            // 
+            // lbl4
+            // 
+            this.lbl4.AutoSize = true;
+            this.lbl4.Location = new System.Drawing.Point(33, 75);
+            this.lbl4.Name = "lbl4";
+            this.lbl4.Size = new System.Drawing.Size(283, 22);
+            this.lbl4.TabIndex = 4;
+            this.lbl4.Text = "Saguilan Roman Jesus Cipriano";
+            this.lbl4.Visible = false;
+            // 
+            // lbl5
+            // 
+            this.lbl5.AutoSize = true;
+            this.lbl5.Location = new System.Drawing.Point(33, 97);
+            this.lbl5.Name = "lbl5";
+            this.lbl5.Size = new System.Drawing.Size(283, 22);
+            this.lbl5.TabIndex = 5;
+            this.lbl5.Text = "Saguilan Roman Jesus Cipriano";
+            this.lbl5.Visible = false;
+            // 
+            // lbl6
+            // 
+            this.lbl6.AutoSize = true;
+            this.lbl6.Location = new System.Drawing.Point(33, 119);
+            this.lbl6.Name = "lbl6";
+            this.lbl6.Size = new System.Drawing.Size(283, 22);
+            this.lbl6.TabIndex = 6;
+            this.lbl6.Text = "Saguilan Roman Jesus Cipriano";
+            this.lbl6.Visible = false;
+            // 
+            // lbl7
+            // 
+            this.lbl7.AutoSize = true;
+            this.lbl7.Location = new System.Drawing.Point(33, 141);
+            this.lbl7.Name = "lbl7";
+            this.lbl7.Size = new System.Drawing.Size(283, 22);
+            this.lbl7.TabIndex = 7;
+            this.lbl7.Text = "Saguilan Roman Jesus Cipriano";
+            this.lbl7.Visible = false;
+            // 
+            // lbl8
+            // 
+            this.lbl8.AutoSize = true;
+            this.lbl8.Location = new System.Drawing.Point(33, 163);
+            this.lbl8.Name = "lbl8";
+            this.lbl8.Size = new System.Drawing.Size(283, 22);
+            this.lbl8.TabIndex = 8;
+            this.lbl8.Text = "Saguilan Roman Jesus Cipriano";
+            this.lbl8.Visible = false;
+            // 
+            // lbl9
+            // 
+            this.lbl9.AutoSize = true;
+            this.lbl9.Location = new System.Drawing.Point(33, 185);
+            this.lbl9.Name = "lbl9";
+            this.lbl9.Size = new System.Drawing.Size(283, 22);
+            this.lbl9.TabIndex = 9;
+            this.lbl9.Text = "Saguilan Roman Jesus Cipriano";
+            this.lbl9.Visible = false;
+            // 
+            // lbl10
+            // 
+            this.lbl10.AutoSize = true;
+            this.lbl10.Location = new System.Drawing.Point(33, 207);
+            this.lbl10.Name = "lbl10";
+            this.lbl10.Size = new System.Drawing.Size(283, 22);
+            this.lbl10.TabIndex = 10;
+            this.lbl10.Text = "Saguilan Roman Jesus Cipriano";
+            this.lbl10.Visible = false;
+            // 
+            // lbl11
+            // 
+            this.lbl11.AutoSize = true;
+            this.lbl11.Location = new System.Drawing.Point(33, 229);
+            this.lbl11.Name = "lbl11";
+            this.lbl11.Size = new System.Drawing.Size(283, 22);
+            this.lbl11.TabIndex = 11;
+            this.lbl11.Text = "Saguilan Roman Jesus Cipriano";
+            this.lbl11.Visible = false;
+            // 
+            // lbl12
+            // 
+            this.lbl12.AutoSize = true;
+            this.lbl12.Location = new System.Drawing.Point(33, 251);
+            this.lbl12.Name = "lbl12";
+            this.lbl12.Size = new System.Drawing.Size(283, 22);
+            this.lbl12.TabIndex = 12;
+            this.lbl12.Text = "Saguilan Roman Jesus Cipriano";
+            this.lbl12.Visible = false;
+            // 
+            // lbl13
+            // 
+            this.lbl13.AutoSize = true;
+            this.lbl13.Location = new System.Drawing.Point(33, 273);
+            this.lbl13.Name = "lbl13";
+            this.lbl13.Size = new System.Drawing.Size(283, 22);
+            this.lbl13.TabIndex = 13;
+            this.lbl13.Text = "Saguilan Roman Jesus Cipriano";
+            this.lbl13.Visible = false;
+            // 
+            // lbl14
+            // 
+            this.lbl14.AutoSize = true;
+            this.lbl14.Location = new System.Drawing.Point(33, 295);
+            this.lbl14.Name = "lbl14";
+            this.lbl14.Size = new System.Drawing.Size(283, 22);
+            this.lbl14.TabIndex = 14;
+            this.lbl14.Text = "Saguilan Roman Jesus Cipriano";
+            this.lbl14.Visible = false;
+            // 
+            // lbl15
+            // 
+            this.lbl15.AutoSize = true;
+            this.lbl15.Location = new System.Drawing.Point(33, 317);
+            this.lbl15.Name = "lbl15";
+            this.lbl15.Size = new System.Drawing.Size(283, 22);
+            this.lbl15.TabIndex = 15;
+            this.lbl15.Text = "Saguilan Roman Jesus Cipriano";
+            this.lbl15.Visible = false;
+            // 
+            // lbl16
+            // 
+            this.lbl16.AutoSize = true;
+            this.lbl16.Location = new System.Drawing.Point(33, 339);
+            this.lbl16.Name = "lbl16";
+            this.lbl16.Size = new System.Drawing.Size(283, 22);
+            this.lbl16.TabIndex = 16;
+            this.lbl16.Text = "Saguilan Roman Jesus Cipriano";
+            this.lbl16.Visible = false;
+            // 
+            // lbl17
+            // 
+            this.lbl17.AutoSize = true;
+            this.lbl17.Location = new System.Drawing.Point(33, 361);
+            this.lbl17.Name = "lbl17";
+            this.lbl17.Size = new System.Drawing.Size(283, 22);
+            this.lbl17.TabIndex = 17;
+            this.lbl17.Text = "Saguilan Roman Jesus Cipriano";
+            this.lbl17.Visible = false;
+            // 
+            // lbl18
+            // 
+            this.lbl18.AutoSize = true;
+            this.lbl18.Location = new System.Drawing.Point(33, 383);
+            this.lbl18.Name = "lbl18";
+            this.lbl18.Size = new System.Drawing.Size(283, 22);
+            this.lbl18.TabIndex = 18;
+            this.lbl18.Text = "Saguilan Roman Jesus Cipriano";
+            this.lbl18.Visible = false;
+            // 
+            // lbl19
+            // 
+            this.lbl19.AutoSize = true;
+            this.lbl19.Location = new System.Drawing.Point(33, 405);
+            this.lbl19.Name = "lbl19";
+            this.lbl19.Size = new System.Drawing.Size(283, 22);
+            this.lbl19.TabIndex = 19;
+            this.lbl19.Text = "Saguilan Roman Jesus Cipriano";
+            this.lbl19.Visible = false;
+            // 
+            // lbl20
+            // 
+            this.lbl20.AutoSize = true;
+            this.lbl20.Location = new System.Drawing.Point(33, 429);
+            this.lbl20.Name = "lbl20";
+            this.lbl20.Size = new System.Drawing.Size(283, 22);
+            this.lbl20.TabIndex = 20;
+            this.lbl20.Text = "Saguilan Roman Jesus Cipriano";
+            this.lbl20.Visible = false;
+            // 
+            // btn1
+            // 
+            this.btn1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btn1.Location = new System.Drawing.Point(460, 351);
+            this.btn1.Name = "btn1";
+            this.btn1.Size = new System.Drawing.Size(31, 32);
+            this.btn1.TabIndex = 21;
+            this.btn1.Text = "1";
+            this.btn1.UseVisualStyleBackColor = false;
+            this.btn1.Visible = false;
+            // 
+            // btn2
+            // 
+            this.btn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btn2.Location = new System.Drawing.Point(522, 351);
+            this.btn2.Name = "btn2";
+            this.btn2.Size = new System.Drawing.Size(31, 32);
+            this.btn2.TabIndex = 22;
+            this.btn2.Text = "2";
+            this.btn2.UseVisualStyleBackColor = false;
+            this.btn2.Visible = false;
+            // 
+            // btn3
+            // 
+            this.btn3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btn3.Location = new System.Drawing.Point(584, 351);
+            this.btn3.Name = "btn3";
+            this.btn3.Size = new System.Drawing.Size(31, 32);
+            this.btn3.TabIndex = 23;
+            this.btn3.Text = "3";
+            this.btn3.UseVisualStyleBackColor = false;
+            this.btn3.Visible = false;
+            // 
+            // btn4
+            // 
+            this.btn4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btn4.Location = new System.Drawing.Point(646, 351);
+            this.btn4.Name = "btn4";
+            this.btn4.Size = new System.Drawing.Size(31, 32);
+            this.btn4.TabIndex = 24;
+            this.btn4.Text = "4";
+            this.btn4.UseVisualStyleBackColor = false;
+            this.btn4.Visible = false;
+            // 
+            // btn5
+            // 
+            this.btn5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btn5.Location = new System.Drawing.Point(712, 351);
+            this.btn5.Name = "btn5";
+            this.btn5.Size = new System.Drawing.Size(31, 32);
+            this.btn5.TabIndex = 25;
+            this.btn5.Text = "5";
+            this.btn5.UseVisualStyleBackColor = false;
+            this.btn5.Visible = false;
+            // 
+            // PiB1
+            // 
+            this.PiB1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PiB1.BackgroundImage")));
+            this.PiB1.Location = new System.Drawing.Point(409, 97);
+            this.PiB1.Name = "PiB1";
+            this.PiB1.Size = new System.Drawing.Size(102, 101);
+            this.PiB1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PiB1.TabIndex = 26;
+            this.PiB1.TabStop = false;
+            this.PiB1.Visible = false;
+            // 
+            // PiB2
+            // 
+            this.PiB2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PiB2.BackgroundImage")));
+            this.PiB2.Location = new System.Drawing.Point(549, 97);
+            this.PiB2.Name = "PiB2";
+            this.PiB2.Size = new System.Drawing.Size(102, 101);
+            this.PiB2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PiB2.TabIndex = 27;
+            this.PiB2.TabStop = false;
+            this.PiB2.Visible = false;
+            // 
+            // PiB3
+            // 
+            this.PiB3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PiB3.BackgroundImage")));
+            this.PiB3.Location = new System.Drawing.Point(682, 97);
+            this.PiB3.Name = "PiB3";
+            this.PiB3.Size = new System.Drawing.Size(102, 101);
+            this.PiB3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PiB3.TabIndex = 28;
+            this.PiB3.TabStop = false;
+            this.PiB3.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 20;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 50;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // timer3
+            // 
+            this.timer3.Interval = 50;
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
+            // timer4
+            // 
+            this.timer4.Interval = 50;
+            this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
+            // 
+            // timer5
+            // 
+            this.timer5.Interval = 50;
+            this.timer5.Tick += new System.EventHandler(this.timer5_Tick);
+            // 
+            // Program
+            // 
+            this.BackColor = System.Drawing.SystemColors.Info;
+            this.ClientSize = new System.Drawing.Size(834, 466);
+            this.Controls.Add(this.PiB3);
+            this.Controls.Add(this.PiB2);
+            this.Controls.Add(this.PiB1);
+            this.Controls.Add(this.btn5);
+            this.Controls.Add(this.btn4);
+            this.Controls.Add(this.btn3);
+            this.Controls.Add(this.btn2);
+            this.Controls.Add(this.btn1);
+            this.Controls.Add(this.lbl20);
+            this.Controls.Add(this.lbl19);
+            this.Controls.Add(this.lbl18);
+            this.Controls.Add(this.lbl17);
+            this.Controls.Add(this.lbl16);
+            this.Controls.Add(this.lbl15);
+            this.Controls.Add(this.lbl14);
+            this.Controls.Add(this.lbl13);
+            this.Controls.Add(this.lbl12);
+            this.Controls.Add(this.lbl11);
+            this.Controls.Add(this.lbl10);
+            this.Controls.Add(this.lbl9);
+            this.Controls.Add(this.lbl8);
+            this.Controls.Add(this.lbl7);
+            this.Controls.Add(this.lbl6);
+            this.Controls.Add(this.lbl5);
+            this.Controls.Add(this.lbl4);
+            this.Controls.Add(this.lbl3);
+            this.Controls.Add(this.lbl2);
+            this.Controls.Add(this.lbl1);
+            this.Controls.Add(this.btn);
+            this.Font = new System.Drawing.Font("Elephant", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "Program";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "PRACTICA 3";
+            this.Load += new System.EventHandler(this.Program_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.PiB1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PiB2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PiB3)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        private void btn_Click(object sender, EventArgs e)
+        {
+            // EVENTO AL DAR CLICK
+            MessageBox.Show("Hasta luego :)");
+            timer4.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            // MOVIMIENTO DEL BOTON PRINCIPAL
+            y = (this.Height - btn.Height) - 45;
+            x = (this.Width - btn.Width) - 25;
+
+            if (Dir1 == true)
+            {
+                btn.Left += 5;
+            }
+            else if (Dir1 == false)
+            {
+                btn.Left -= 5;
+            }
+
+            if (Dir2 == true)
+            {
+                btn.Top -= 5;
+            }
+            else if (Dir2 == false)
+            {
+                btn.Top += 5;
+            }
+
+            if (btn.Left <= this.ClientRectangle.Left)
+            {
+                Dir1 = true;
+            }
+
+            if (btn.Left + btn.Width >= this.ClientRectangle.Right)
+            {
+                Dir1 = false;
+            }
+            
+            if (btn.Top <= this.ClientRectangle.Top)
+            {
+                Dir2 = false;
+            }
+
+            if (btn.Top >= this.ClientRectangle.Bottom)
+            {
+                Dir2 = true;
+            }
+
+            // EVENTO 1
+            if (btn.Top <= this.ClientRectangle.Top)
+            {
+                this.BackColor = Color.Purple;
+                timer2.Enabled = true;
+
+                PiB1.Visible = true;
+                PiB2.Visible = true;
+                PiB3.Visible = true;
+            }
+
+            // EVENTO 2
+            if (btn.Right >= this.ClientRectangle.Right)
+            {
+                this.BackColor = Color.Orange;
+
+                timer3.Enabled = true;
+
+                btn1.Visible = true;
+                btn2.Visible = true;
+                btn3.Visible = true;
+                btn4.Visible = true;
+                btn5.Visible = true;
+            }
+
+            // EVENTO 3
+            if (btn.Left <= this.ClientRectangle.Left + 30)
+            {
+                timer2.Enabled = false;
+                timer3.Enabled = false;
+
+                this.BackColor = Color.White;
+
+                btn1.Visible = false;
+                btn2.Visible = false;
+                btn3.Visible = false;
+                btn4.Visible = false;
+                btn5.Visible = false;
+
+                PiB1.Visible = false;
+                PiB2.Visible = false;
+                PiB3.Visible = false;
+
+                lbl1.Visible = false;
+                lbl2.Visible = false;
+                lbl3.Visible = false;
+                lbl4.Visible = false;
+                lbl5.Visible = false;
+                lbl6.Visible = false;
+                lbl7.Visible = false;
+                lbl8.Visible = false;
+                lbl9.Visible = false;
+                lbl10.Visible = false;
+                lbl11.Visible = false;
+                lbl12.Visible = false;
+                lbl13.Visible = false;
+                lbl14.Visible = false;
+                lbl15.Visible = false;
+                lbl16.Visible = false;
+                lbl17.Visible = false;
+                lbl18.Visible = false;
+                lbl19.Visible = false;
+                lbl20.Visible = false;
+            }
+
+            // EVENTO 4
+            if (btn.Top > y)
+            {
+                this.BackColor = Color.Yellow;
+
+                lbl1.Visible = true;
+                lbl2.Visible = true;
+                lbl3.Visible = true;
+                lbl4.Visible = true;
+                lbl5.Visible = true;
+                lbl6.Visible = true;
+                lbl7.Visible = true;
+                lbl8.Visible = true;
+                lbl9.Visible = true;
+                lbl10.Visible = true;
+                lbl11.Visible = true;
+                lbl12.Visible = true;
+                lbl13.Visible = true;
+                lbl14.Visible = true;
+                lbl15.Visible = true;
+                lbl16.Visible = true;
+                lbl17.Visible = true;
+                lbl18.Visible = true;
+                lbl19.Visible = true;
+                lbl20.Visible = true;
+            }
+
+            // EVENTO 5
+            if (btn.Left > x && btn.Top <= 0)
+            {
+                this.BackColor = Color.Green;
+                timer3.Enabled = false;
+                timer5.Enabled = false;
+                PiB1.Visible = false;
+                PiB2.Visible = false;
+                PiB3.Visible = false;
+            }
+
+            // EVENTO 6
+            if (btn.Left > x && btn.Top > y)
+            {
+                this.BackColor = Color.Blue;
+                lbl1.Visible = false;
+                lbl2.Visible = false;
+                lbl3.Visible = false;
+                lbl4.Visible = false;
+                lbl5.Visible = false;
+                lbl6.Visible = false;
+                lbl7.Visible = false;
+                lbl8.Visible = false;
+                lbl9.Visible = false;
+                lbl10.Visible = false;
+                lbl11.Visible = false;
+                lbl12.Visible = false;
+                lbl13.Visible = false;
+                lbl14.Visible = false;
+                lbl15.Visible = false;
+                lbl16.Visible = false;
+                lbl17.Visible = false;
+                lbl18.Visible = false;
+                lbl19.Visible = false;
+                lbl20.Visible = false;
+            }
+
+            // EVENTO 7
+            if (btn.Left <= 0 && btn.Top <= 0)
+            {
+                timer5.Enabled = true;
+            }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            // MOVIMIENTO IMAGEN 1
+            if (Px1 == true)
+            {
+                PiB1.Left += 10;
+            }
+            else if (Px1 == false)
+            {
+                PiB1.Left -= 10;
+            }
+
+            if (Py1 == true)
+            {
+                PiB1.Top -= 10;
+            }
+            else if (Py1 == false)
+            {
+                PiB1.Top += 10;
+            }
+
+            if (PiB1.Left <= this.ClientRectangle.Left)
+            {
+                Px1 = true;
+            }
+
+            if (PiB1.Left + PiB1.Width >= this.ClientRectangle.Right)
+            {
+                Px1 = false;
+            }
+
+            if (PiB1.Top <= this.ClientRectangle.Top)
+            {
+                Py1 = false;
+            }
+
+            if (PiB1.Top >= this.ClientRectangle.Bottom)
+            {
+                Py1 = true;
+            }
+
+            // MOVIMIENTO IMAGEN 2
+            if (Px2 == true)
+            {
+                PiB2.Left += 11;
+            }
+            else if (Px2 == false)
+            {
+                PiB2.Left -= 11;
+            }
+
+            if (Py2 == true)
+            {
+                PiB2.Top -= 11;
+            }
+            else if (Py2 == false)
+            {
+                PiB2.Top += 11;
+            }
+
+            if (PiB2.Left <= this.ClientRectangle.Left)
+            {
+                Px2 = true;
+            }
+
+            if (PiB2.Left + PiB2.Width >= this.ClientRectangle.Right)
+            {
+                Px2 = false;
+            }
+
+            if (PiB2.Top <= this.ClientRectangle.Top)
+            {
+                Py2 = false;
+            }
+
+            if (PiB2.Top >= this.ClientRectangle.Bottom)
+            {
+                Py2 = true;
+            }
+
+            //MOVIMIENTO IMAGEN 3
+            if (Px3 == true)
+            {
+                PiB3.Left += 12;
+            }
+            else if (Px3 == false)
+            {
+                PiB3.Left -= 12;
+            }
+
+            if (Py3 == true)
+            {
+                PiB3.Top -= 12;
+            }
+            else if (Py3 == false)
+            {
+                PiB3.Top += 12;
+            }
+
+            if (PiB3.Left <= this.ClientRectangle.Left)
+            {
+                Px3 = true;
+            }
+
+            if (PiB3.Left + PiB3.Width >= this.ClientRectangle.Right)
+            {
+                Px3 = false;
+            }
+
+            if (PiB3.Top <= this.ClientRectangle.Top)
+            {
+                Py3 = false;
+            }
+
+            if (PiB3.Top >= this.ClientRectangle.Bottom)
+            {
+                Py3 = true;
+            }
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            //MOVIMIENTO BOTON 1
+            if (btnD == true)
+            {
+                btn1.Left += 5;
+            }
+            else if (btnA == false)
+            {
+                btn1.Left -= 5;
+            }
+
+            if (btnA == true)
+            {
+                btn1.Top -= 5;
+            }
+            else if (btnA == false)
+            {
+                btn1.Top += 5;
+            }
+
+            if (btn1.Left <= this.ClientRectangle.Left)
+            {
+                btnD = true;
+            }
+
+            if (btn1.Left + btn1.Width >= this.ClientRectangle.Right)
+            {
+                btnD = false;
+            }
+
+            if (btn1.Top <= this.ClientRectangle.Top)
+            {
+                btnA = false;
+            }
+
+            if (btn1.Top >= this.ClientRectangle.Bottom)
+            {
+                btnA = true;
+            }
+
+            //MOVIMIENTO BOTON 2
+            if (btnD == true)
+            {
+                btn2.Left += 6;
+            }
+            else if (btnA == false)
+            {
+                btn2.Left -= 6;
+            }
+
+            if (btnA == true)
+            {
+                btn2.Top -= 6;
+            }
+            else if (btnA == false)
+            {
+                btn2.Top += 6;
+            }
+
+            if (btn2.Left <= this.ClientRectangle.Left)
+            {
+                btnD = true;
+            }
+
+            if (btn2.Left + btn2.Width >= this.ClientRectangle.Right)
+            {
+                btnD = false;
+            }
+
+            if (btn2.Top <= this.ClientRectangle.Top)
+            {
+                btnA = false;
+            }
+
+            if (btn2.Top >= this.ClientRectangle.Bottom)
+            {
+                btnA = true;
+            }
+
+            //MOVIMIENTO BOTON 3
+            if (btnD == true)
+            {
+                btn3.Left += 7;
+            }
+            else if (btnA == false)
+            {
+                btn3.Left -= 7;
+            }
+
+            if (btnA == true)
+            {
+                btn3.Top -= 7;
+            }
+            else if (btnA == false)
+            {
+                btn3.Top += 7;
+            }
+
+            if (btn3.Left <= this.ClientRectangle.Left)
+            {
+                btnD = true;
+            }
+
+            if (btn3.Left + btn3.Width >= this.ClientRectangle.Right)
+            {
+                btnD = false;
+            }
+
+            if (btn3.Top <= this.ClientRectangle.Top)
+            {
+                btnA = false;
+            }
+
+            if (btn3.Top >= this.ClientRectangle.Bottom)
+            {
+                btnA = true;
+            }
+
+            //MOVIMIENTO BOTON 4
+            if (btnD == true)
+            {
+                btn4.Left += 8;
+            }
+            else if (btnA == false)
+            {
+                btn4.Left -= 8;
+            }
+
+            if (btnA == true)
+            {
+                btn4.Top -= 8;
+            }
+            else if (btnA == false)
+            {
+                btn4.Top += 8;
+            }
+
+            if (btn4.Left <= this.ClientRectangle.Left)
+            {
+                btnD = true;
+            }
+
+            if (btn4.Left + btn4.Width >= this.ClientRectangle.Right)
+            {
+                btnD = false;
+            }
+
+            if (btn4.Top <= this.ClientRectangle.Top)
+            {
+                btnA = false;
+            }
+
+            if (btn4.Top >= this.ClientRectangle.Bottom)
+            {
+                btnA = true;
+            }
+
+            //MOVIMIENTO BOTON 5
+            if (btnD == true)
+            {
+                btn5.Left += 9;
+            }
+            else if (btnA == false)
+            {
+                btn5.Left -= 9;
+            }
+
+            if (btnA == true)
+            {
+                btn5.Top -= 9;
+            }
+            else if (btnA == false)
+            {
+                btn5.Top += 9;
+            }
+
+            if (btn5.Left <= this.ClientRectangle.Left)
+            {
+                btnD = true;
+            }
+
+            if (btn5.Left + btn5.Width >= this.ClientRectangle.Right)
+            {
+                btnD = false;
+            }
+
+            if (btn5.Top <= this.ClientRectangle.Top)
+            {
+                btnA = false;
+            }
+
+            if (btn5.Top >= this.ClientRectangle.Bottom)
+            {
+                btnA = true;
+            }
+        }
+
+        private void timer4_Tick(object sender, EventArgs e)
+        {
+            // EVENTO DEL BOTON PRINCIPAL DE CERRAR EL PROGRAMA DESPUES DE 5 SEGUNDOS
+            sec++;
+            this.Text = sec.ToString();
+            if (sec == 5)
+            {
+                this.Close();
+            }
+        }
+
+        private void timer5_Tick(object sender, EventArgs e)
+        {
+            // EVENTO QUE DA COLOR A LA FORMA EN R G B
+            Random rn = new Random();
+            int r, g, b;
+            r = rn.Next(0, 255);
+            g = rn.Next(0, 255);
+            b = rn.Next(0, 255);
+
+            BackColor = Color.FromArgb(r, g, b);
+        }
+
+        private void Program_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
