@@ -1,0 +1,444 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace ProyectoMetodoBiseccion
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void bunifuCustomLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            // CERRAR FORMA
+            Close();
+        }
+
+        private void bunifuFlatButton1_Click(object sender, EventArgs e)
+        {
+            // SAGUILAN ROMAN JESUS CIPRIANO    20210633
+            // PROYECTO 1 - UNIDAD 2 METODO DE BISECCION
+            // OPERACIONES A REALIZAR DE CADA ITERACCION 
+            // ITERACCION 1
+            Double fxi, fxu, xr, fxr, xi, xu, signo;
+
+            xi = System.Double.Parse(bunifuCustomTextbox1.Text);
+            xu = System.Double.Parse(bunifuCustomTextbox2.Text);
+
+            bunifuCustomTextbox8.Text = "1";
+            bunifuCustomTextbox18.Text = bunifuCustomTextbox1.Text;
+            bunifuCustomTextbox28.Text = bunifuCustomTextbox2.Text;
+
+            fxi = -0.5 * (xi * xi) + 2.5 * xi + 4.5;
+            bunifuCustomTextbox38.Text = fxi.ToString();
+            fxu = -0.5 * (xu * xu) + 2.5 * xu + 4.5;
+            bunifuCustomTextbox48.Text = fxu.ToString();
+            xr = (xi + xu) / 2;
+            bunifuCustomTextbox58.Text = xr.ToString();
+            fxr = -0.5 * (xr * xr) + 2.5 * xr + 4.5;
+            bunifuCustomTextbox68.Text = fxr.ToString();
+            bunifuCustomTextbox78.Text = "N / A";
+            signo = fxi * fxr;
+            if (signo >= 0)
+            {
+                bunifuCustomTextbox88.Text = "+";
+            }
+            else
+            {
+                bunifuCustomTextbox88.Text = "-";
+            }
+            
+
+            // ITERACCION 2
+            Double fxi2, fxu2, xr2, fxr2, xi2, xu2, ea2, signo2;
+
+            xi2 = System.Double.Parse(bunifuCustomTextbox1.Text);
+            xu2 = System.Double.Parse(xr.ToString());
+
+            bunifuCustomTextbox9.Visible = true;
+            bunifuCustomTextbox19.Visible = true;
+            bunifuCustomTextbox29.Visible = true;
+            bunifuCustomTextbox39.Visible = true;
+            bunifuCustomTextbox49.Visible = true;
+            bunifuCustomTextbox59.Visible = true;
+            bunifuCustomTextbox69.Visible = true;
+            bunifuCustomTextbox79.Visible = true;
+            bunifuCustomTextbox89.Visible = true;
+
+            bunifuCustomTextbox9.Text = "2";
+            bunifuCustomTextbox19.Text = bunifuCustomTextbox1.Text;
+            bunifuCustomTextbox29.Text = bunifuCustomTextbox58.Text;
+
+            fxi2 = -0.5 * (xi2 * xi2) + 2.5 * xi2 + 4.5;
+            bunifuCustomTextbox39.Text = fxi2.ToString();
+            fxu2= -0.5 * (xu2 * xu2) + 2.5 * xu2 + 4.5;
+            bunifuCustomTextbox49.Text = fxu2.ToString();
+            xr2 = (xi2 + xu2) / 2;
+            bunifuCustomTextbox59.Text = xr2.ToString();
+            fxr2 = Math.Round(-0.5 * (xr2 * xr2) + 2.5 * xr2 + 4.5, 4);
+            bunifuCustomTextbox69.Text = fxr2.ToString();
+            ea2 = Math.Abs((xr2 - xr) / xr2) * 100;
+            bunifuCustomTextbox79.Text = ea2.ToString();
+            signo2 = Math.Round(fxi2 * fxr2, 4);
+            if (signo2 >= 0)
+            {
+                bunifuCustomTextbox89.Text = "+";
+            }
+            else
+            {
+                bunifuCustomTextbox89.Text = "-";
+            }
+
+            // ITERACCION 3 
+            Double fxi3, fxu3, xr3, fxr3, xi3, xu3, ea3, signo3;
+
+            xi3 = System.Double.Parse(xr2.ToString());
+            xu3 = System.Double.Parse(bunifuCustomTextbox29.Text);
+
+            bunifuCustomTextbox10.Visible = true;
+            bunifuCustomTextbox20.Visible = true;
+            bunifuCustomTextbox30.Visible = true;
+            bunifuCustomTextbox40.Visible = true;
+            bunifuCustomTextbox50.Visible = true;
+            bunifuCustomTextbox60.Visible = true;
+            bunifuCustomTextbox70.Visible = true;
+            bunifuCustomTextbox80.Visible = true;
+            bunifuCustomTextbox90.Visible = true;
+
+            bunifuCustomTextbox10.Text = "3";
+            bunifuCustomTextbox20.Text = bunifuCustomTextbox59.Text;
+            bunifuCustomTextbox30.Text = bunifuCustomTextbox29.Text;
+
+            fxi3 = Math.Round(-0.5 * (xi3 * xi3) + 2.5 * xi3 + 4.5, 4);
+            bunifuCustomTextbox40.Text = fxi3.ToString();
+            fxu3 = -0.5 * (xu3* xu3) + 2.5 * xu3 + 4.5;
+            bunifuCustomTextbox50.Text = fxu3.ToString();
+            xr3 = (xi3 + xu3) / 2;
+            bunifuCustomTextbox60.Text = xr3.ToString();
+            fxr3 = Math.Round(-0.5 * (xr3 * xr3) + 2.5 * xr3 + 4.5, 4);
+            bunifuCustomTextbox70.Text = fxr3.ToString();
+            ea3 = Math.Round(Math.Abs((xr3 - xr2) / xr3) * 100, 1);
+            bunifuCustomTextbox80.Text = ea3.ToString();
+            signo3 = fxi3 * fxr3;
+            if (signo3 >= 0)
+            {
+                bunifuCustomTextbox90.Text = "+";
+            }
+            else
+            {
+                bunifuCustomTextbox90.Text = "-";
+            }
+
+            // ITERACCION 4
+            Double fxi4, fxu4, xr4, fxr4, xi4, xu4, ea4, signo4;
+
+            xi4 = System.Double.Parse(bunifuCustomTextbox20.Text);
+            xu4 = System.Double.Parse(xr3.ToString());
+
+            bunifuCustomTextbox11.Visible = true;
+            bunifuCustomTextbox21.Visible = true;
+            bunifuCustomTextbox31.Visible = true;
+            bunifuCustomTextbox41.Visible = true;
+            bunifuCustomTextbox51.Visible = true;
+            bunifuCustomTextbox61.Visible = true;
+            bunifuCustomTextbox71.Visible = true;
+            bunifuCustomTextbox81.Visible = true;
+            bunifuCustomTextbox91.Visible = true;
+
+            bunifuCustomTextbox11.Text = "4";
+            bunifuCustomTextbox21.Text = bunifuCustomTextbox20.Text;
+            bunifuCustomTextbox31.Text = bunifuCustomTextbox60.Text;
+
+            fxi4 = Math.Round(-0.5 * (xi4 * xi4) + 2.5 * xi4 + 4.5, 4);
+            bunifuCustomTextbox41.Text = fxi4.ToString();
+            fxu4 = Math.Round(-0.5 * (xu4 * xu4) + 2.5 * xu4 + 4.5, 4);
+            bunifuCustomTextbox51.Text = fxu4.ToString();
+            xr4 = (xi4 + xu4) / 2;
+            bunifuCustomTextbox61.Text = xr4.ToString();
+            fxr4 = Math.Round(-0.5 * (xr4 * xr4) + 2.5 * xr4 + 4.5, 4);
+            bunifuCustomTextbox71.Text = fxr4.ToString();
+            ea4 = Math.Round(Math.Abs((xr4 - xr3) / xr4) * 100, 1);
+            bunifuCustomTextbox81.Text = ea4.ToString();
+            signo4 = fxi4 * fxr4;
+            if (signo4 >= 0)
+            {
+                bunifuCustomTextbox91.Text = "+";
+            }
+            else
+            {
+                bunifuCustomTextbox91.Text = "-";
+            }
+
+            // ITERACCION 5
+            Double fxi5, fxu5, xr5, fxr5, xi5, xu5, ea5, signo5;
+
+            xi5 = System.Double.Parse(bunifuCustomTextbox21.Text);
+            xu5 = System.Double.Parse(xr4.ToString());
+
+            bunifuCustomTextbox12.Visible = true;
+            bunifuCustomTextbox22.Visible = true;
+            bunifuCustomTextbox32.Visible = true;
+            bunifuCustomTextbox42.Visible = true;
+            bunifuCustomTextbox52.Visible = true;
+            bunifuCustomTextbox62.Visible = true;
+            bunifuCustomTextbox72.Visible = true;
+            bunifuCustomTextbox82.Visible = true;
+            bunifuCustomTextbox92.Visible = true;
+
+            bunifuCustomTextbox12.Text = "5";
+            bunifuCustomTextbox22.Text = bunifuCustomTextbox21.Text;
+            bunifuCustomTextbox32.Text = bunifuCustomTextbox61.Text;
+
+            fxi5 = Math.Round(-0.5 * (xi5 * xi5) + 2.5 * xi5 + 4.5, 4);
+            bunifuCustomTextbox42.Text = fxi5.ToString();
+            fxu5 = Math.Round(-0.5 * (xu5 * xu5) + 2.5 * xu5 + 4.5, 4);
+            bunifuCustomTextbox52.Text = fxu5.ToString();
+            xr5 = Math.Round((xi5 + xu5) / 2, 4);
+            bunifuCustomTextbox62.Text = xr5.ToString();
+            fxr5 = Math.Round(-0.5 * (xr5 * xr5) + 2.5 * xr5 + 4.5, 4);
+            bunifuCustomTextbox72.Text = fxr5.ToString();
+            ea5 = Math.Round(Math.Abs((xr5 - xr4) / xr5) * 100, 1);
+            bunifuCustomTextbox82.Text = ea5.ToString();
+            signo5 = fxi5 * fxr5;
+            if (signo5 >= 0)
+            {
+                bunifuCustomTextbox92.Text = "+";
+            }
+            else
+            {
+                bunifuCustomTextbox92.Text = "-";
+            }
+
+            // ITERACCION 6
+            Double fxi6, fxu6, xr6, fxr6, xi6, xu6, ea6, signo6;
+
+            xi6 = System.Double.Parse(bunifuCustomTextbox22.Text);
+            xu6 = System.Double.Parse(xr5.ToString());
+
+            bunifuCustomTextbox13.Visible = true;
+            bunifuCustomTextbox27.Visible = true;
+            bunifuCustomTextbox33.Visible = true;
+            bunifuCustomTextbox43.Visible = true;
+            bunifuCustomTextbox53.Visible = true;
+            bunifuCustomTextbox63.Visible = true;
+            bunifuCustomTextbox73.Visible = true;
+            bunifuCustomTextbox83.Visible = true;
+            bunifuCustomTextbox93.Visible = true;
+
+            bunifuCustomTextbox13.Text = "6";
+            bunifuCustomTextbox27.Text = bunifuCustomTextbox22.Text;
+            bunifuCustomTextbox33.Text = bunifuCustomTextbox62.Text;
+
+            fxi6 = Math.Round(-0.5 * (xi6 * xi6) + 2.5 * xi6 + 4.5, 4);
+            bunifuCustomTextbox43.Text = fxi6.ToString();
+            fxu6 = Math.Round(-0.5 * (xu6 * xu6) + 2.5 * xu6 + 4.5, 4);
+            bunifuCustomTextbox53.Text = fxu6.ToString();
+            xr6 = Math.Round((xi6 + xu6) / 2, 4);
+            bunifuCustomTextbox63.Text = xr6.ToString();
+            fxr6 = Math.Round(-0.5 * (xr6 * xr6) + 2.5 * xr6 + 4.5, 4);
+            bunifuCustomTextbox73.Text = fxr6.ToString();
+            ea6 = Math.Round(Math.Abs((xr6 - xr5) / xr6) * 100, 1);
+            bunifuCustomTextbox83.Text = ea6.ToString();
+            signo6 = fxi6 * fxr6;
+            if (signo6 >= 0)
+            {
+                bunifuCustomTextbox93.Text = "+";
+            }
+            else
+            {
+                bunifuCustomTextbox93.Text = "-";
+            }
+
+            // ITERACCION 7
+            Double fxi7, fxu7, xr7, fxr7, xi7, xu7, ea7, signo7;
+
+            xi7 = System.Double.Parse(xr6.ToString());
+            xu7 = System.Double.Parse(bunifuCustomTextbox33.Text);
+
+            bunifuCustomTextbox14.Visible = true;
+            bunifuCustomTextbox26.Visible = true;
+            bunifuCustomTextbox34.Visible = true;
+            bunifuCustomTextbox44.Visible = true;
+            bunifuCustomTextbox54.Visible = true;
+            bunifuCustomTextbox64.Visible = true;
+            bunifuCustomTextbox74.Visible = true;
+            bunifuCustomTextbox84.Visible = true;
+            bunifuCustomTextbox94.Visible = true;
+
+            bunifuCustomTextbox14.Text = "7";
+            bunifuCustomTextbox26.Text = bunifuCustomTextbox63.Text;
+            bunifuCustomTextbox34.Text = bunifuCustomTextbox33.Text;
+
+            fxi7 = Math.Round(-0.5 * (xi7 * xi7) + 2.5 * xi7 + 4.5, 4);
+            bunifuCustomTextbox44.Text = fxi7.ToString();
+            fxu7 = Math.Round(-0.5 * (xu7 * xu7) + 2.5 * xu7 + 4.5, 4);
+            bunifuCustomTextbox54.Text = fxu7.ToString();
+            xr7 = Math.Round((xi7 + xu7) / 2, 4);
+            bunifuCustomTextbox64.Text = xr7.ToString();
+            fxr7 = Math.Round(-0.5 * (xr7 * xr7) + 2.5 * xr7 + 4.5, 4);
+            bunifuCustomTextbox74.Text = fxr7.ToString();
+            ea7 = Math.Round(Math.Abs((xr7 - xr6) / xr7) * 100, 1);
+            bunifuCustomTextbox84.Text = ea7.ToString();
+            signo7 = fxi7 * fxr7;
+            if (signo7 >= 0)
+            {
+                bunifuCustomTextbox94.Text = "+";
+            }
+            else
+            {
+                bunifuCustomTextbox94.Text = "-";
+            }
+
+            // ITERACCION 8
+            Double fxi8, fxu8, xr8, fxr8, xi8, xu8, ea8, signo8;
+
+            xi8 = System.Double.Parse(xr7.ToString());
+            xu8 = System.Double.Parse(bunifuCustomTextbox34.Text);
+
+            bunifuCustomTextbox15.Visible = true;
+            bunifuCustomTextbox25.Visible = true;
+            bunifuCustomTextbox35.Visible = true;
+            bunifuCustomTextbox45.Visible = true;
+            bunifuCustomTextbox55.Visible = true;
+            bunifuCustomTextbox65.Visible = true;
+            bunifuCustomTextbox75.Visible = true;
+            bunifuCustomTextbox85.Visible = true;
+            bunifuCustomTextbox95.Visible = true;
+
+            bunifuCustomTextbox15.Text = "8";
+            bunifuCustomTextbox25.Text = bunifuCustomTextbox64.Text;
+            bunifuCustomTextbox35.Text = bunifuCustomTextbox34.Text;
+
+            fxi8 = Math.Round(-0.5 * (xi8 * xi8) + 2.5 * xi8 + 4.5, 4);
+            bunifuCustomTextbox45.Text = fxi8.ToString();
+            fxu8 = Math.Round(-0.5 * (xu8 * xu8) + 2.5 * xu8 + 4.5, 4);
+            bunifuCustomTextbox55.Text = fxu8.ToString();
+            xr8 = Math.Round((xi8 + xu8) / 2, 4);
+            bunifuCustomTextbox65.Text = xr8.ToString();
+            fxr8 = Math.Round(-0.5 * (xr8 * xr8) + 2.5 * xr8 + 4.5, 4);
+            bunifuCustomTextbox75.Text = fxr8.ToString();
+            ea8 = Math.Round(Math.Abs((xr8 - xr7) / xr8) * 100, 1);
+            bunifuCustomTextbox85.Text = ea8.ToString();
+            signo8 = fxi8 * fxr8;
+            if (signo8 >= 0)
+            {
+                bunifuCustomTextbox95.Text = "+";
+            }
+            else
+            {
+                bunifuCustomTextbox95.Text = "-";
+            }
+
+            // ITERACCION 9
+            Double fxi9, fxu9, xr9, fxr9, xi9, xu9, ea9, signo9;
+
+            xi9 = System.Double.Parse(xr8.ToString());
+            xu9 = System.Double.Parse(bunifuCustomTextbox35.Text);
+
+            bunifuCustomTextbox16.Visible = true;
+            bunifuCustomTextbox24.Visible = true;
+            bunifuCustomTextbox36.Visible = true;
+            bunifuCustomTextbox46.Visible = true;
+            bunifuCustomTextbox56.Visible = true;
+            bunifuCustomTextbox66.Visible = true;
+            bunifuCustomTextbox76.Visible = true;
+            bunifuCustomTextbox86.Visible = true;
+            bunifuCustomTextbox96.Visible = true;
+
+            bunifuCustomTextbox16.Text = "9";
+            bunifuCustomTextbox24.Text = bunifuCustomTextbox65.Text;
+            bunifuCustomTextbox36.Text = bunifuCustomTextbox35.Text;
+
+            fxi9 = Math.Round(-0.5 * (xi9 * xi9) + 2.5 * xi9 + 4.5, 4);
+            bunifuCustomTextbox46.Text = fxi9.ToString();
+            fxu9 = Math.Round(-0.5 * (xu9 * xu9) + 2.5 * xu9 + 4.5, 4);
+            bunifuCustomTextbox56.Text = fxu9.ToString();
+            xr9 = Math.Round((xi9 + xu9) / 2, 4);
+            bunifuCustomTextbox66.Text = xr9.ToString();
+            fxr9 = Math.Round(-0.5 * (xr9 * xr9) + 2.5 * xr9 + 4.5,4);
+            bunifuCustomTextbox76.Text = fxr9.ToString();
+            ea9 = Math.Round(Math.Abs((xr9 - xr8) / xr9) * 100, 1);
+            bunifuCustomTextbox86.Text = ea9.ToString();
+            signo9= fxi9 * fxr9;
+            if (signo9 >= 0)
+            {
+                bunifuCustomTextbox96.Text = "+";
+            }
+            else
+            {
+                bunifuCustomTextbox96.Text = "-";
+            }
+
+            // ITERACCION 10
+            Double fxi10, fxu10, xr10, fxr10, xi10, xu10, ea10, signo10;
+
+            xi10 = System.Double.Parse(xr9.ToString());
+            xu10 = System.Double.Parse(bunifuCustomTextbox36.Text);
+
+            bunifuCustomTextbox17.Visible = true;
+            bunifuCustomTextbox23.Visible = true;
+            bunifuCustomTextbox37.Visible = true;
+            bunifuCustomTextbox47.Visible = true;
+            bunifuCustomTextbox57.Visible = true;
+            bunifuCustomTextbox67.Visible = true;
+            bunifuCustomTextbox77.Visible = true;
+            bunifuCustomTextbox87.Visible = true;
+            bunifuCustomTextbox97.Visible = true;
+
+            bunifuCustomTextbox17.Text = "10";
+            bunifuCustomTextbox23.Text = bunifuCustomTextbox66.Text;
+            bunifuCustomTextbox37.Text = bunifuCustomTextbox36.Text;
+
+            fxi10 = Math.Round(-0.5 * (xi10 * xi10) + 2.5 * xi10 + 4.5, 4);
+            bunifuCustomTextbox47.Text = fxi10.ToString();
+            fxu10 = Math.Round(-0.5 * (xu10 * xu10) + 2.5 * xu10 + 4.5, 4);
+            bunifuCustomTextbox57.Text = fxu10.ToString();
+            xr10 = Math.Round((xi10 + xu10) / 2, 4);
+            bunifuCustomTextbox67.Text = xr10.ToString();
+            fxr10 = Math.Round(-0.5 * (xr10 * xr10) + 2.5 * xr10 + 4.5, 4);
+            bunifuCustomTextbox77.Text = fxr10.ToString();
+            ea10 = Math.Round(Math.Abs((xr10 - xr9) / xr10) * 100, 1);
+            bunifuCustomTextbox87.Text = ea10.ToString();
+            signo10 = fxi10 * fxr10;
+            if (signo10 >= 0)
+            {
+                bunifuCustomTextbox97.Text = "+";
+            }
+            else
+            {
+                bunifuCustomTextbox97.Text = "-";
+            }
+
+            // MOSTRANDO RESULTADOS
+            bunifuCustomTextbox7.Text = bunifuCustomTextbox67.Text;
+            bunifuCustomTextbox6.Text = bunifuCustomTextbox87.Text;
+            bunifuCustomTextbox5.Text = bunifuCustomTextbox17.Text;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            // MAXIMIZAR FORMA
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            // MINIMIZAR FORMA
+            this.WindowState = FormWindowState.Minimized;
+        }
+    }
+}
