@@ -1,5 +1,5 @@
 <h1 align="center">Hola 👋, Yo soy xMeiker</h1>
-<h3 align="center">Programador, desarrollador de software y proyectos en MC.</h3>
+<h3 align="center">Estudiante Programador, desarrollador de software y proyectos en MC.</h3>
 
 - 🌱 Actualmente estoy aprendiendo **React, Python y TypeScript.**
 
