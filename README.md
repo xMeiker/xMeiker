@@ -7,7 +7,7 @@
 
 - 💬 Skills en **C#, Html, CSS, JavaScript, MongoDB, SQL Server.**
 
-- 📫 Contactame **meikerjesus@gmail.com**
+- 📫 Contactame **jesus.saguilan201@tectijuana.edu.mx o meikerjesus@gmail.com**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
